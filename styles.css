@@ -356,10 +356,13 @@ nav {
 }
 
 .ticker-row {
+  width: fit-content;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 28px;
 }
 
@@ -377,20 +380,26 @@ nav {
 
 .ticker {
   position: relative;
-  min-width: 250px;
+  width: 48px;
+  min-width: 0;
+  max-width: min(46vw, 220px);
+  flex: 0 0 auto;
   height: 1.5em;
   overflow: hidden;
   text-align: left;
+  transition: width 0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .tick {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: max-content;
+  max-width: min(46vw, 220px);
   color: var(--accent-d);
   font-size: 15px;
   font-style: italic;
+  text-align: left;
   white-space: nowrap;
   opacity: 0;
   transform: translateY(110%);
@@ -567,18 +576,51 @@ nav {
   margin-bottom: 46px;
 }
 
+.centered-heading {
+  max-width: 940px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+.centered-heading .section-kicker {
+  justify-content: center;
+}
+
 .section-title {
   margin-top: 14px;
   font-size: clamp(34px, 5vw, 64px);
   font-weight: 300;
   line-height: 1.06;
   letter-spacing: 0;
+  text-wrap: balance;
 }
 
 .body-copy {
   color: var(--muted);
   font-size: 18px;
   line-height: 1.72;
+}
+
+.problem-split {
+  align-items: center;
+}
+
+.problem-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.problem-heading .section-title {
+  max-width: 600px;
+  font-size: clamp(40px, 4.7vw, 60px);
+}
+
+.problem-copy {
+  align-self: center;
+  max-width: 590px;
 }
 
 .body-copy p + p {
@@ -707,7 +749,13 @@ nav {
 }
 
 .workspace-intro {
+  align-items: center;
   margin-bottom: 48px;
+}
+
+.workspace-intro > .body-copy {
+  align-self: center;
+  max-width: 590px;
 }
 
 .workspace-layout {
@@ -751,10 +799,15 @@ nav {
   font-weight: 800;
 }
 
-.jobs-grid,
-.security-grid {
+.jobs-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.security-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
 }
 
@@ -1104,7 +1157,13 @@ nav {
   }
 
   .ticker {
-    min-width: min(100%, 220px);
+    width: 48px;
+    max-width: min(56vw, 220px);
+    min-width: 0;
+  }
+
+  .tick {
+    max-width: min(56vw, 220px);
   }
 
   .hero p {

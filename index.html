@@ -113,17 +113,14 @@
     </section>
 
     <section class="section problem-section">
-      <div class="container split">
-        <div>
+      <div class="container split problem-split">
+        <div class="problem-heading">
           <p class="section-kicker" data-i18n="problem.kicker">El problema real</p>
           <h2 class="section-title" data-i18n="problem.title">Las empresas no pierden oportunidades por falta de ideas. Las pierden porque el equipo no llega a todo.</h2>
         </div>
-        <div class="body-copy">
+        <div class="body-copy problem-copy">
           <p data-i18n="problem.copy1">
-            Un lead llega y se responde tarde. Un cliente pregunta y nadie puede contestar. Una factura se revisa dos veces. Un informe se queda para mañana. No es falta de estrategia: es trabajo operativo acumulándose.
-          </p>
-          <p data-i18n="problem.copy2">
-            Agentia convierte esos atascos en agentes de IA que responden, preparan, actualizan y avisan al equipo solo cuando hace falta una persona.
+            Un lead llega y se responde tarde. Un cliente pregunta y nadie puede contestar. Una factura se revisa dos veces. Un informe se queda para mañana. No es falta de estrategia: es trabajo operativo acumulándose. Agentia convierte esos atascos en agentes de IA que responden, preparan, actualizan y avisan al equipo solo cuando hace falta una persona.
           </p>
         </div>
       </div>
@@ -131,7 +128,7 @@
 
     <section class="section method-section" id="method">
       <div class="container">
-        <div class="section-heading">
+        <div class="section-heading centered-heading">
           <p class="section-kicker" data-i18n="method.kicker">Cómo trabajamos</p>
           <h2 class="section-title" data-i18n="method.title">De una tarea repetitiva a un agente de IA trabajando de verdad en tu negocio.</h2>
         </div>
@@ -169,7 +166,7 @@
 
     <section class="section agents-section" id="agents">
       <div class="container">
-        <div class="section-heading">
+        <div class="section-heading centered-heading">
           <p class="section-kicker" data-i18n="agents.kicker">Agentes de IA para tu equipo</p>
           <h2 class="section-title" data-i18n="agents.title">No son chatbots genéricos. Son agentes de IA diseñados para hacer tareas concretas de tu negocio.</h2>
         </div>
@@ -293,7 +290,7 @@
 
     <section class="section security-section" id="security">
       <div class="container">
-        <div class="section-heading">
+        <div class="section-heading centered-heading">
           <p class="section-kicker" data-i18n="security.kicker">Control y seguridad desde el primer día</p>
           <h2 class="section-title" data-i18n="security.title">Automatización donde tiene sentido, supervisión humana donde importa.</h2>
         </div>
@@ -362,8 +359,7 @@
           "signal.statement": "Responde antes, vende mejor y libera a tu equipo del trabajo que nadie debería hacer a mano.",
           "problem.kicker": "El problema real",
           "problem.title": "Las empresas no pierden oportunidades por falta de ideas. Las pierden porque el equipo no llega a todo.",
-          "problem.copy1": "Un lead llega y se responde tarde. Un cliente pregunta y nadie puede contestar. Una factura se revisa dos veces. Un informe se queda para mañana. No es falta de estrategia: es trabajo operativo acumulándose.",
-          "problem.copy2": "Agentia convierte esos atascos en agentes de IA que responden, preparan, actualizan y avisan al equipo solo cuando hace falta una persona.",
+          "problem.copy1": "Un lead llega y se responde tarde. Un cliente pregunta y nadie puede contestar. Una factura se revisa dos veces. Un informe se queda para mañana. No es falta de estrategia: es trabajo operativo acumulándose. Agentia convierte esos atascos en agentes de IA que responden, preparan, actualizan y avisan al equipo solo cuando hace falta una persona.",
           "method.kicker": "Cómo trabajamos",
           "method.title": "De una tarea repetitiva a un agente de IA trabajando de verdad en tu negocio.",
           "method.one.title": "Encontrar la tarea que más frena al equipo",
@@ -454,8 +450,7 @@
           "signal.statement": "Respond faster, sell better and free your team from work no one should do by hand.",
           "problem.kicker": "The real problem",
           "problem.title": "Companies do not lose opportunities because they lack ideas. They lose them because the team cannot get to everything.",
-          "problem.copy1": "A lead comes in and gets a late reply. A customer asks and no one can answer. An invoice gets checked twice. A report slips to tomorrow. It is not a lack of strategy: it is operational work piling up.",
-          "problem.copy2": "Agentia turns those bottlenecks into AI agents that respond, prepare, update and alert the team only when a person is needed.",
+          "problem.copy1": "A lead comes in and gets a late reply. A customer asks and no one can answer. An invoice gets checked twice. A report slips to tomorrow. It is not a lack of strategy: it is operational work piling up. Agentia turns those bottlenecks into AI agents that respond, prepare, update and alert the team only when a person is needed.",
           "method.kicker": "How we work",
           "method.title": "From a repetitive task to an AI agent really working inside your business.",
           "method.one.title": "Find the task slowing the team down most",
@@ -604,6 +599,7 @@
       }
 
       if (persist) localStorage.setItem(storageKey, lang);
+      window.dispatchEvent(new CustomEvent("agentia:languagechange"));
     }
 
     const langToggle = document.getElementById("lang-toggle");
@@ -635,14 +631,29 @@
     setLanguage(initialLang, false);
 
     (function startTicker() {
-      const ticks = document.querySelectorAll("#ticker .tick");
+      const ticker = document.getElementById("ticker");
+      if (!ticker) return;
+      const ticks = Array.from(ticker.querySelectorAll(".tick"));
       if (!ticks.length) return;
       let current = 0;
+
+      function fitTickerTo(tick) {
+        if (!tick) return;
+        ticker.style.width = `${Math.ceil(tick.scrollWidth)}px`;
+      }
+
+      requestAnimationFrame(() => fitTickerTo(ticks[current]));
+      window.addEventListener("resize", () => fitTickerTo(ticks[current]));
+      window.addEventListener("agentia:languagechange", () => {
+        requestAnimationFrame(() => fitTickerTo(ticks[current]));
+      });
+
       setInterval(() => {
         ticks[current].classList.remove("active");
         ticks[current].classList.add("exit");
         const previous = current;
         current = (current + 1) % ticks.length;
+        fitTickerTo(ticks[current]);
         ticks[current].classList.add("active");
         setTimeout(() => ticks[previous].classList.remove("exit"), 480);
       }, 2600);
