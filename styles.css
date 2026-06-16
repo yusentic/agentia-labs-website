@@ -616,6 +616,9 @@ nav {
 .problem-heading .section-title {
   max-width: 600px;
   font-size: clamp(40px, 4.7vw, 60px);
+  text-align: justify;
+  text-align-last: justify;
+  text-wrap: auto;
 }
 
 .problem-copy {
