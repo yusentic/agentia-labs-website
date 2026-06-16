@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agentia Labs - Trabajadores digitales gestionados</title>
+  <meta
+    name="description"
+    content="Agentia Labs diseña, construye y opera trabajadores digitales que amplían la capacidad de tu equipo humano. Agentia Workspace gobierna, protege y mide su impacto."
+  />
+  <meta property="og:title" content="Agentia Labs - Trabajadores digitales gestionados" />
+  <meta
+    property="og:description"
+    content="Diseñamos, construimos y operamos agentes de IA para trabajos reales de negocio, con gobierno, seguridad y medición desde Agentia Workspace."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/workspace.png" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegación principal">
+      <a class="brand" href="#top" aria-label="Agentia Labs">
+        <img src="assets/agentia-mark-h.svg" alt="" />
+        <span>Agentia Labs</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-menu" id="nav-menu">
+        <a href="#method" data-i18n="nav.method">Método</a>
+        <a href="#agents" data-i18n="nav.agents">Agentes</a>
+        <a href="#workspace" data-i18n="nav.workspace">Workspace</a>
+        <a href="#jobs" data-i18n="nav.jobs">Casos</a>
+        <a href="#security" data-i18n="nav.security">Seguridad</a>
+      </div>
+
+      <div class="nav-actions">
+        <div class="language-switcher" aria-label="Selector de idioma">
+          <button type="button" data-lang="es" aria-pressed="true">ES</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <a class="nav-cta" data-mailto href="mailto:hello@agentialabs.ai?subject=Sprint%20de%20dise%C3%B1o%20de%20trabajadores%20digitales">
+          <span data-i18n="nav.cta">Empezar por un job</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <p class="eyebrow" data-i18n="hero.eyebrow">Boutique de implementación agéntica</p>
+        <h1 id="hero-title" data-i18n="hero.title">Agentia Labs</h1>
+        <p class="hero-copy" data-i18n="hero.copy">
+          Diseña, construye y opera trabajadores digitales que amplían la capacidad de tu equipo humano. Nuestra plataforma los gobierna, protege y mide su impacto real en el negocio.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" data-mailto href="mailto:hello@agentialabs.ai?subject=Sprint%20de%20dise%C3%B1o%20de%20trabajadores%20digitales">
+            <span data-i18n="hero.primary">Diseñar mi primer trabajador digital</span>
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M4 10h10.5M10.5 5.5 15 10l-4.5 4.5" />
+            </svg>
+          </a>
+          <a class="button button-secondary" href="#method">
+            <span data-i18n="hero.secondary">Ver cómo trabajamos</span>
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M10 4v11M5.5 10.5 10 15l4.5-4.5" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="signal-band" aria-label="Tesis de Agentia">
+      <div class="container signal-grid">
+        <p data-i18n="signal.statement">El valor no está en abrir otro SaaS. Está en que un trabajo crítico quede cubierto, supervisado y medido cada mes.</p>
+      </div>
+    </section>
+
+    <section class="section problem-section">
+      <div class="container split">
+        <div>
+          <p class="section-kicker" data-i18n="problem.kicker">El punto de partida</p>
+          <h2 class="section-title" data-i18n="problem.title">Tu negocio no necesita experimentar con IA. Necesita capacidad operativa fiable.</h2>
+        </div>
+        <div class="body-copy">
+          <p data-i18n="problem.copy1">
+            Las empresas medianas y locales ya sienten el cuello de botella: atención al cliente, back-office, documentación, seguimiento comercial, reporting y tareas que se quedan sin hacer porque el equipo humano no llega.
+          </p>
+          <p data-i18n="problem.copy2">
+            El problema no es comprar una herramienta. Es elegir el trabajo correcto, integrarlo en los sistemas reales, definir controles, ponerlo en producción y mantenerlo vivo.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section method-section" id="method">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker" data-i18n="method.kicker">Método</p>
+          <h2 class="section-title" data-i18n="method.title">Diseñamos la fuerza de trabajo digital alrededor del job, no de la herramienta.</h2>
+        </div>
+
+        <div class="method-grid">
+          <article class="method-card">
+            <span class="method-number">01</span>
+            <div class="method-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h10M4 17h7" /></svg>
+            </div>
+            <h3 data-i18n="method.one.title">Mapear</h3>
+            <p data-i18n="method.one.copy">Levantamos procesos AS-IS, fricciones, handoffs, excepciones y jobs que hoy no se hacen por falta de capacidad.</p>
+          </article>
+
+          <article class="method-card">
+            <span class="method-number">02</span>
+            <div class="method-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3v18M4 8h16M6 16h12" /></svg>
+            </div>
+            <h3 data-i18n="method.two.title">Construir</h3>
+            <p data-i18n="method.two.copy">Diseñamos agentes conversacionales y headless, conectados a herramientas reales, con permisos acotados y humano en el bucle.</p>
+          </article>
+
+          <article class="method-card">
+            <span class="method-number">03</span>
+            <div class="method-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 12a7 7 0 0 1 12-5M19 12a7 7 0 0 1-12 5M17 7h-5M7 17h5" /></svg>
+            </div>
+            <h3 data-i18n="method.three.title">Operar</h3>
+            <p data-i18n="method.three.copy">Mantenemos la operación, revisamos KPIs, gestionamos excepciones y evolucionamos el sistema conforme aprende el negocio.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section agents-section" id="agents">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker" data-i18n="agents.kicker">Trabajadores digitales</p>
+          <h2 class="section-title" data-i18n="agents.title">Dos tipos de agentes. Una misma operación.</h2>
+        </div>
+
+        <div class="agent-grid">
+          <article class="agent-card">
+            <div class="agent-copy">
+              <span class="agent-label" data-i18n="agents.conversational.label">Conversacionales</span>
+              <h3 data-i18n="agents.conversational.title">Cuando el trabajo necesita diálogo.</h3>
+              <p data-i18n="agents.conversational.copy">Soporte, cualificación, acceso a conocimiento, onboarding y flujos guiados para equipo o cliente final.</p>
+            </div>
+            <img src="assets/agent-chat.png" alt="Vista de un agente conversacional" loading="lazy" />
+          </article>
+
+          <article class="agent-card agent-card-dark">
+            <div class="agent-copy">
+              <span class="agent-label" data-i18n="agents.headless.label">Headless</span>
+              <h3 data-i18n="agents.headless.title">Cuando el trabajo necesita ejecución.</h3>
+              <p data-i18n="agents.headless.copy">Documentos, enriquecimiento de datos, emails, aprobaciones, routing, reporting y back-office en segundo plano.</p>
+            </div>
+            <img src="assets/agent-email.png" alt="Vista de un agente headless preparando una acción" loading="lazy" />
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section workspace-section" id="workspace">
+      <div class="container">
+        <div class="split workspace-intro">
+          <div>
+            <p class="section-kicker" data-i18n="workspace.kicker">Agentia Workspace</p>
+            <h2 class="section-title" data-i18n="workspace.title">La plataforma no sustituye el servicio. Lo hace gobernable.</h2>
+          </div>
+          <p class="body-copy" data-i18n="workspace.copy">
+            Workspace es la capa SaaS desde la que un responsable ve qué trabajadores digitales están activos, qué jobs completan, dónde dudan, qué necesita aprobación humana y qué impacto están teniendo.
+          </p>
+        </div>
+
+        <div class="workspace-layout">
+          <figure class="workspace-frame">
+            <img src="assets/workspace.png" alt="Dashboard de Agentia Workspace con agentes activos y métricas de operación" loading="lazy" />
+            <figcaption data-i18n="workspace.caption">Vista ilustrativa. Cada Workspace se configura alrededor de los jobs y KPIs reales del cliente.</figcaption>
+          </figure>
+
+          <div class="control-list">
+            <article>
+              <span>01</span>
+              <h3 data-i18n="workspace.one.title">Job ledger</h3>
+              <p data-i18n="workspace.one.copy">Registro trazable de jobs, decisiones, llamadas a herramientas, aprobaciones y resultados.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3 data-i18n="workspace.two.title">Cola de excepciones</h3>
+              <p data-i18n="workspace.two.copy">Lo incierto sube al humano correcto con contexto, recomendación y SLA claro.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3 data-i18n="workspace.three.title">Gobierno y permisos</h3>
+              <p data-i18n="workspace.three.copy">Accesos acotados, credenciales aisladas, auditoría y offboarding limpio de cada agente.</p>
+            </article>
+            <article>
+              <span>04</span>
+              <h3 data-i18n="workspace.four.title">Outcomes visibles</h3>
+              <p data-i18n="workspace.four.copy">Horas liberadas, backlog, calidad, tiempo de ciclo y métricas de negocio por job.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section jobs-section" id="jobs">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker" data-i18n="jobs.kicker">Dónde empezar</p>
+          <h2 class="section-title" data-i18n="jobs.title">Un buen primer agente nace de un job con volumen, fricción y métrica.</h2>
+        </div>
+
+        <div class="jobs-grid">
+          <article class="job-card">
+            <h3 data-i18n="jobs.one.title">Lead-to-cash</h3>
+            <p data-i18n="jobs.one.copy">Research de leads, cualificación, follow-up, handoff comercial, propuestas y facturación.</p>
+          </article>
+          <article class="job-card">
+            <h3 data-i18n="jobs.two.title">Customer Ops</h3>
+            <p data-i18n="jobs.two.copy">Triage, respuestas asistidas, clasificación de incidencias, base de conocimiento y escalados.</p>
+          </article>
+          <article class="job-card">
+            <h3 data-i18n="jobs.three.title">Back-office</h3>
+            <p data-i18n="jobs.three.copy">Facturas, documentos, conciliaciones, reporting recurrente y coordinación interna.</p>
+          </article>
+          <article class="job-card">
+            <h3 data-i18n="jobs.four.title">Social y contenido</h3>
+            <p data-i18n="jobs.four.copy">Planificación, borradores, respuestas, revisión de marca y seguimiento de conversaciones.</p>
+          </article>
+          <article class="job-card">
+            <h3 data-i18n="jobs.five.title">Knowledge work</h3>
+            <p data-i18n="jobs.five.copy">Búsqueda interna, extracción documental, resumen, preparación de informes y soporte experto.</p>
+          </article>
+          <article class="job-card">
+            <h3 data-i18n="jobs.six.title">Procure-to-pay</h3>
+            <p data-i18n="jobs.six.copy">Solicitud, validación, aprobaciones, proveedores, compras y seguimiento de pagos.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section verticals-section">
+      <div class="container split">
+        <div>
+          <p class="section-kicker" data-i18n="verticals.kicker">Foco inicial</p>
+          <h2 class="section-title" data-i18n="verticals.title">Sectores donde el trabajo operativo se vuelve concreto rápido.</h2>
+        </div>
+        <div class="vertical-list" aria-label="Verticales iniciales">
+          <div><span>01</span><strong data-i18n="verticals.one">E-commerce y retail</strong></div>
+          <div><span>02</span><strong data-i18n="verticals.two">Servicios profesionales</strong></div>
+          <div><span>03</span><strong data-i18n="verticals.three">Industria ligera y distribución</strong></div>
+          <div><span>04</span><strong data-i18n="verticals.four">Inmobiliario y servicios locales</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section security-section" id="security">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker" data-i18n="security.kicker">Seguridad por diseño</p>
+          <h2 class="section-title" data-i18n="security.title">Autonomía sí. Caja negra no.</h2>
+        </div>
+
+        <div class="security-grid">
+          <article>
+            <h3 data-i18n="security.one.title">Humano en el bucle</h3>
+            <p data-i18n="security.one.copy">Los agentes escalan cuando falta criterio, hay riesgo o se supera una política definida.</p>
+          </article>
+          <article>
+            <h3 data-i18n="security.two.title">Acceso acotado</h3>
+            <p data-i18n="security.two.copy">Cada trabajador digital opera con las herramientas y permisos mínimos para su job.</p>
+          </article>
+          <article>
+            <h3 data-i18n="security.three.title">Trazabilidad</h3>
+            <p data-i18n="security.three.copy">Inputs, outputs, aprobaciones y acciones quedan registrados para revisión y mejora.</p>
+          </article>
+          <article>
+            <h3 data-i18n="security.four.title">Modelo flexible</h3>
+            <p data-i18n="security.four.copy">Elegimos el mejor modelo para cada trabajo, sin encerrar la operación en un proveedor.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container cta-inner">
+        <p class="section-kicker" data-i18n="cta.kicker">Primer paso</p>
+        <h2 data-i18n="cta.title">Elige un cuello de botella. Lo convertimos en un trabajador digital medible.</h2>
+        <p data-i18n="cta.copy">Empezamos con un sprint breve: job, proceso, datos, riesgos, KPI y primer caso de producción.</p>
+        <a class="button button-primary" data-mailto href="mailto:hello@agentialabs.ai?subject=Sprint%20de%20dise%C3%B1o%20de%20trabajadores%20digitales">
+          <span data-i18n="cta.button">Reservar un sprint de diseño</span>
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M4 10h10.5M10.5 5.5 15 10l-4.5 4.5" />
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a class="footer-brand" href="#top">
+        <img src="assets/agentia-mark-h-light.svg" alt="" />
+        <span>Agentia Labs</span>
+      </a>
+      <p data-i18n="footer.copy">© 2026 Agentia Labs. Boutique de implementación y operación de trabajadores digitales.</p>
+      <a href="mailto:hello@agentialabs.ai">hello@agentialabs.ai</a>
+    </div>
+  </footer>
+
+  <script>
+    const i18n = {
+      es: {
+        title: "Agentia Labs - Trabajadores digitales gestionados",
+        description: "Agentia Labs diseña, construye y opera trabajadores digitales que amplían la capacidad de tu equipo humano. Agentia Workspace gobierna, protege y mide su impacto.",
+        subject: "Sprint de diseño de trabajadores digitales",
+        strings: {
+          "nav.method": "Método",
+          "nav.agents": "Agentes",
+          "nav.workspace": "Workspace",
+          "nav.jobs": "Casos",
+          "nav.security": "Seguridad",
+          "nav.cta": "Empezar por un job",
+          "hero.eyebrow": "Boutique de implementación agéntica",
+          "hero.title": "Agentia Labs",
+          "hero.copy": "Diseña, construye y opera trabajadores digitales que amplían la capacidad de tu equipo humano. Nuestra plataforma los gobierna, protege y mide su impacto real en el negocio.",
+          "hero.primary": "Diseñar mi primer trabajador digital",
+          "hero.secondary": "Ver cómo trabajamos",
+          "signal.statement": "El valor no está en abrir otro SaaS. Está en que un trabajo crítico quede cubierto, supervisado y medido cada mes.",
+          "problem.kicker": "El punto de partida",
+          "problem.title": "Tu negocio no necesita experimentar con IA. Necesita capacidad operativa fiable.",
+          "problem.copy1": "Las empresas medianas y locales ya sienten el cuello de botella: atención al cliente, back-office, documentación, seguimiento comercial, reporting y tareas que se quedan sin hacer porque el equipo humano no llega.",
+          "problem.copy2": "El problema no es comprar una herramienta. Es elegir el trabajo correcto, integrarlo en los sistemas reales, definir controles, ponerlo en producción y mantenerlo vivo.",
+          "method.kicker": "Método",
+          "method.title": "Diseñamos la fuerza de trabajo digital alrededor del job, no de la herramienta.",
+          "method.one.title": "Mapear",
+          "method.one.copy": "Levantamos procesos AS-IS, fricciones, handoffs, excepciones y jobs que hoy no se hacen por falta de capacidad.",
+          "method.two.title": "Construir",
+          "method.two.copy": "Diseñamos agentes conversacionales y headless, conectados a herramientas reales, con permisos acotados y humano en el bucle.",
+          "method.three.title": "Operar",
+          "method.three.copy": "Mantenemos la operación, revisamos KPIs, gestionamos excepciones y evolucionamos el sistema conforme aprende el negocio.",
+          "agents.kicker": "Trabajadores digitales",
+          "agents.title": "Dos tipos de agentes. Una misma operación.",
+          "agents.conversational.label": "Conversacionales",
+          "agents.conversational.title": "Cuando el trabajo necesita diálogo.",
+          "agents.conversational.copy": "Soporte, cualificación, acceso a conocimiento, onboarding y flujos guiados para equipo o cliente final.",
+          "agents.headless.label": "Headless",
+          "agents.headless.title": "Cuando el trabajo necesita ejecución.",
+          "agents.headless.copy": "Documentos, enriquecimiento de datos, emails, aprobaciones, routing, reporting y back-office en segundo plano.",
+          "workspace.kicker": "Agentia Workspace",
+          "workspace.title": "La plataforma no sustituye el servicio. Lo hace gobernable.",
+          "workspace.copy": "Workspace es la capa SaaS desde la que un responsable ve qué trabajadores digitales están activos, qué jobs completan, dónde dudan, qué necesita aprobación humana y qué impacto están teniendo.",
+          "workspace.caption": "Vista ilustrativa. Cada Workspace se configura alrededor de los jobs y KPIs reales del cliente.",
+          "workspace.one.title": "Job ledger",
+          "workspace.one.copy": "Registro trazable de jobs, decisiones, llamadas a herramientas, aprobaciones y resultados.",
+          "workspace.two.title": "Cola de excepciones",
+          "workspace.two.copy": "Lo incierto sube al humano correcto con contexto, recomendación y SLA claro.",
+          "workspace.three.title": "Gobierno y permisos",
+          "workspace.three.copy": "Accesos acotados, credenciales aisladas, auditoría y offboarding limpio de cada agente.",
+          "workspace.four.title": "Outcomes visibles",
+          "workspace.four.copy": "Horas liberadas, backlog, calidad, tiempo de ciclo y métricas de negocio por job.",
+          "jobs.kicker": "Dónde empezar",
+          "jobs.title": "Un buen primer agente nace de un job con volumen, fricción y métrica.",
+          "jobs.one.title": "Lead-to-cash",
+          "jobs.one.copy": "Research de leads, cualificación, follow-up, handoff comercial, propuestas y facturación.",
+          "jobs.two.title": "Customer Ops",
+          "jobs.two.copy": "Triage, respuestas asistidas, clasificación de incidencias, base de conocimiento y escalados.",
+          "jobs.three.title": "Back-office",
+          "jobs.three.copy": "Facturas, documentos, conciliaciones, reporting recurrente y coordinación interna.",
+          "jobs.four.title": "Social y contenido",
+          "jobs.four.copy": "Planificación, borradores, respuestas, revisión de marca y seguimiento de conversaciones.",
+          "jobs.five.title": "Knowledge work",
+          "jobs.five.copy": "Búsqueda interna, extracción documental, resumen, preparación de informes y soporte experto.",
+          "jobs.six.title": "Procure-to-pay",
+          "jobs.six.copy": "Solicitud, validación, aprobaciones, proveedores, compras y seguimiento de pagos.",
+          "verticals.kicker": "Foco inicial",
+          "verticals.title": "Sectores donde el trabajo operativo se vuelve concreto rápido.",
+          "verticals.one": "E-commerce y retail",
+          "verticals.two": "Servicios profesionales",
+          "verticals.three": "Industria ligera y distribución",
+          "verticals.four": "Inmobiliario y servicios locales",
+          "security.kicker": "Seguridad por diseño",
+          "security.title": "Autonomía sí. Caja negra no.",
+          "security.one.title": "Humano en el bucle",
+          "security.one.copy": "Los agentes escalan cuando falta criterio, hay riesgo o se supera una política definida.",
+          "security.two.title": "Acceso acotado",
+          "security.two.copy": "Cada trabajador digital opera con las herramientas y permisos mínimos para su job.",
+          "security.three.title": "Trazabilidad",
+          "security.three.copy": "Inputs, outputs, aprobaciones y acciones quedan registrados para revisión y mejora.",
+          "security.four.title": "Modelo flexible",
+          "security.four.copy": "Elegimos el mejor modelo para cada trabajo, sin encerrar la operación en un proveedor.",
+          "cta.kicker": "Primer paso",
+          "cta.title": "Elige un cuello de botella. Lo convertimos en un trabajador digital medible.",
+          "cta.copy": "Empezamos con un sprint breve: job, proceso, datos, riesgos, KPI y primer caso de producción.",
+          "cta.button": "Reservar un sprint de diseño",
+          "footer.copy": "© 2026 Agentia Labs. Boutique de implementación y operación de trabajadores digitales."
+        }
+      },
+      en: {
+        title: "Agentia Labs - Managed digital workers",
+        description: "Agentia Labs designs, builds and operates digital workers that extend your human team. Agentia Workspace governs, protects and measures their impact.",
+        subject: "Digital workforce design sprint",
+        strings: {
+          "nav.method": "Method",
+          "nav.agents": "Agents",
+          "nav.workspace": "Workspace",
+          "nav.jobs": "Use cases",
+          "nav.security": "Security",
+          "nav.cta": "Start with one job",
+          "hero.eyebrow": "Agentic implementation boutique",
+          "hero.title": "Agentia Labs",
+          "hero.copy": "Designs, builds and operates digital workers that extend your human team. Our platform governs them, protects them and measures their real business impact.",
+          "hero.primary": "Design my first digital worker",
+          "hero.secondary": "See how we work",
+          "signal.statement": "The value is not another SaaS login. The value is a critical business job covered, supervised and measured every month.",
+          "problem.kicker": "Starting point",
+          "problem.title": "Your business does not need to experiment with AI. It needs reliable operating capacity.",
+          "problem.copy1": "Local and mid-market companies already feel the bottleneck: customer operations, back-office, documents, commercial follow-up, reporting and work that remains undone because the human team is at capacity.",
+          "problem.copy2": "The challenge is not buying a tool. It is choosing the right work, integrating it into real systems, defining controls, putting it in production and keeping it alive.",
+          "method.kicker": "Method",
+          "method.title": "We design the digital workforce around the job, not the tool.",
+          "method.one.title": "Map",
+          "method.one.copy": "We map AS-IS processes, friction, handoffs, exceptions and jobs that are not being done today because capacity is missing.",
+          "method.two.title": "Build",
+          "method.two.copy": "We design conversational and headless agents, connected to real tools, with scoped permissions and humans in the loop.",
+          "method.three.title": "Operate",
+          "method.three.copy": "We maintain the operation, review KPIs, manage exceptions and evolve the system as it learns the business.",
+          "agents.kicker": "Digital workers",
+          "agents.title": "Two types of agents. One operating system.",
+          "agents.conversational.label": "Conversational",
+          "agents.conversational.title": "When the job needs dialogue.",
+          "agents.conversational.copy": "Support, qualification, knowledge access, onboarding and guided flows for teams or end customers.",
+          "agents.headless.label": "Headless",
+          "agents.headless.title": "When the job needs execution.",
+          "agents.headless.copy": "Documents, data enrichment, email, approvals, routing, reporting and back-office work in the background.",
+          "workspace.kicker": "Agentia Workspace",
+          "workspace.title": "The platform does not replace the service. It makes it governable.",
+          "workspace.copy": "Workspace is the SaaS layer where a manager sees which digital workers are active, which jobs they complete, where they are uncertain, what needs human approval and what impact they are producing.",
+          "workspace.caption": "Illustrative view. Each Workspace is configured around the customer's real jobs and KPIs.",
+          "workspace.one.title": "Job ledger",
+          "workspace.one.copy": "A traceable record of jobs, decisions, tool calls, approvals and outcomes.",
+          "workspace.two.title": "Exception queue",
+          "workspace.two.copy": "Uncertainty is escalated to the right human with context, recommendation and a clear SLA.",
+          "workspace.three.title": "Governance and permissions",
+          "workspace.three.copy": "Scoped access, isolated credentials, auditability and clean offboarding for every agent.",
+          "workspace.four.title": "Visible outcomes",
+          "workspace.four.copy": "Hours released, backlog, quality, cycle time and business metrics by job.",
+          "jobs.kicker": "Where to start",
+          "jobs.title": "A strong first agent starts with a job that has volume, friction and a metric.",
+          "jobs.one.title": "Lead-to-cash",
+          "jobs.one.copy": "Lead research, qualification, follow-up, sales handoff, proposals and billing.",
+          "jobs.two.title": "Customer Ops",
+          "jobs.two.copy": "Triage, assisted replies, issue classification, knowledge base and escalations.",
+          "jobs.three.title": "Back-office",
+          "jobs.three.copy": "Invoices, documents, reconciliations, recurring reporting and internal coordination.",
+          "jobs.four.title": "Social and content",
+          "jobs.four.copy": "Planning, drafts, replies, brand review and conversation monitoring.",
+          "jobs.five.title": "Knowledge work",
+          "jobs.five.copy": "Internal search, document extraction, summaries, report preparation and expert support.",
+          "jobs.six.title": "Procure-to-pay",
+          "jobs.six.copy": "Requests, validation, approvals, vendors, purchases and payment follow-up.",
+          "verticals.kicker": "Initial focus",
+          "verticals.title": "Sectors where operational work becomes concrete quickly.",
+          "verticals.one": "E-commerce and retail",
+          "verticals.two": "Professional services",
+          "verticals.three": "Light industry and distribution",
+          "verticals.four": "Real estate and local services",
+          "security.kicker": "Secure by design",
+          "security.title": "Autonomy, yes. Black boxes, no.",
+          "security.one.title": "Human in the loop",
+          "security.one.copy": "Agents escalate when judgement is missing, risk appears or a defined policy is exceeded.",
+          "security.two.title": "Scoped access",
+          "security.two.copy": "Each digital worker operates with the minimum tools and permissions required for its job.",
+          "security.three.title": "Traceability",
+          "security.three.copy": "Inputs, outputs, approvals and actions are logged for review and improvement.",
+          "security.four.title": "Flexible model",
+          "security.four.copy": "We choose the best model for each job without locking the operation into one provider.",
+          "cta.kicker": "First step",
+          "cta.title": "Choose one bottleneck. We turn it into a measurable digital worker.",
+          "cta.copy": "We start with a short sprint: job, process, data, risks, KPI and the first production case.",
+          "cta.button": "Book a design sprint",
+          "footer.copy": "© 2026 Agentia Labs. Digital worker implementation and operations boutique."
+        }
+      }
+    };
+
+    const storageKey = "agentia-lang";
+    const params = new URLSearchParams(window.location.search);
+    const requestedLang = params.get("lang");
+    const savedLang = localStorage.getItem(storageKey);
+    const initialLang = requestedLang === "en" || requestedLang === "es" ? requestedLang : savedLang || "es";
+
+    function setLanguage(lang, persist = true) {
+      const dictionary = i18n[lang] || i18n.es;
+      document.documentElement.lang = lang;
+      document.title = dictionary.title;
+      const meta = document.querySelector('meta[name="description"]');
+      if (meta) meta.setAttribute("content", dictionary.description);
+
+      document.querySelectorAll("[data-i18n]").forEach((node) => {
+        const key = node.getAttribute("data-i18n");
+        const value = dictionary.strings[key];
+        if (value) node.innerHTML = value;
+      });
+
+      document.querySelectorAll("[data-mailto]").forEach((node) => {
+        node.setAttribute("href", `mailto:hello@agentialabs.ai?subject=${encodeURIComponent(dictionary.subject)}`);
+      });
+
+      document.querySelectorAll("[data-lang]").forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.getAttribute("data-lang") === lang));
+      });
+
+      if (persist) localStorage.setItem(storageKey, lang);
+    }
+
+    document.querySelectorAll("[data-lang]").forEach((button) => {
+      button.addEventListener("click", () => {
+        setLanguage(button.getAttribute("data-lang"));
+      });
+    });
+
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navMenu = document.querySelector("#nav-menu");
+    menuToggle.addEventListener("click", () => {
+      const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!isOpen));
+      navMenu.classList.toggle("is-open", !isOpen);
+    });
+
+    navMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        menuToggle.setAttribute("aria-expanded", "false");
+        navMenu.classList.remove("is-open");
+      });
+    });
+
+    setLanguage(initialLang, false);
+  </script>
+</body>
+</html>
