@@ -25,82 +25,87 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <nav class="nav container" aria-label="Navegación principal">
-      <a class="brand" href="#top" aria-label="Agentia Labs">
-        <img src="assets/agentia-mark-h.svg" alt="" />
-        <span>Agentia Labs</span>
+  <header>
+    <nav aria-label="Navegación principal">
+      <a class="logo-wrap" href="#top" aria-label="Agentia Labs">
+        <svg class="logo-svg" id="logo-svg" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <g id="dot-group"></g>
+        </svg>
+        <span class="logo-name">Agentia Labs</span>
       </a>
-
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="#method" data-i18n="nav.method">Metodología</a></li>
+          <li><a href="#agents" data-i18n="nav.agents">Agentes</a></li>
+          <li><a href="#workspace" data-i18n="nav.workspace">Workspace</a></li>
+          <li><a href="#security" data-i18n="nav.security">Seguridad</a></li>
+        </ul>
+        <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Cambiar a inglés">EN</button>
+        <a class="nav-cta" data-mailto href="mailto:hello@agentialabs.ai?subject=Sprint%20de%20dise%C3%B1o%20de%20trabajadores%20digitales">
+          <span data-i18n="nav.cta">Empieza con un job →</span>
+        </a>
+      </div>
+      <button class="ham" id="ham" type="button" aria-label="Menú" aria-expanded="false" aria-controls="mobile-menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
-
-      <div class="nav-menu" id="nav-menu">
-        <a href="#method" data-i18n="nav.method">Método</a>
-        <a href="#agents" data-i18n="nav.agents">Agentes</a>
-        <a href="#workspace" data-i18n="nav.workspace">Workspace</a>
-        <a href="#jobs" data-i18n="nav.jobs">Casos</a>
-        <a href="#security" data-i18n="nav.security">Seguridad</a>
-      </div>
-
-      <div class="nav-actions">
-        <div class="language-switcher" aria-label="Selector de idioma">
-          <button type="button" data-lang="es" aria-pressed="true">ES</button>
-          <button type="button" data-lang="en" aria-pressed="false">EN</button>
-        </div>
-        <a class="nav-cta" data-mailto href="mailto:hello@agentialabs.ai?subject=Sprint%20de%20dise%C3%B1o%20de%20trabajadores%20digitales">
-          <span data-i18n="nav.cta">Empezar por un job</span>
-        </a>
-      </div>
     </nav>
   </header>
 
+  <div id="mobile-menu">
+    <a href="#method" class="mm-link" data-i18n="nav.method">Metodología</a>
+    <a href="#agents" class="mm-link" data-i18n="nav.agents">Agentes</a>
+    <a href="#workspace" class="mm-link" data-i18n="nav.workspace">Workspace</a>
+    <a href="#security" class="mm-link" data-i18n="nav.security">Seguridad</a>
+    <a class="m-cta" data-mailto href="mailto:hello@agentialabs.ai?subject=Sprint%20de%20dise%C3%B1o%20de%20trabajadores%20digitales">
+      <span data-i18n="nav.mobileCta">Empieza con un job</span>
+    </a>
+  </div>
+
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-bg" aria-hidden="true"></div>
-      <div class="container hero-inner">
-        <p class="eyebrow" data-i18n="hero.eyebrow">Boutique de implementación agéntica</p>
-        <h1 id="hero-title" data-i18n="hero.title">Agentia Labs</h1>
-        <p class="hero-copy" data-i18n="hero.copy">
-          Diseña, construye y opera trabajadores digitales que amplían la capacidad de tu equipo humano. Nuestra plataforma los gobierna, protege y mide su impacto real en el negocio.
-        </p>
-        <div class="hero-actions">
-          <a class="button button-primary" data-mailto href="mailto:hello@agentialabs.ai?subject=Sprint%20de%20dise%C3%B1o%20de%20trabajadores%20digitales">
-            <span data-i18n="hero.primary">Diseñar mi primer trabajador digital</span>
-            <svg viewBox="0 0 20 20" aria-hidden="true">
-              <path d="M4 10h10.5M10.5 5.5 15 10l-4.5 4.5" />
-            </svg>
-          </a>
-          <a class="button button-secondary" href="#method">
-            <span data-i18n="hero.secondary">Ver cómo trabajamos</span>
-            <svg viewBox="0 0 20 20" aria-hidden="true">
-              <path d="M10 4v11M5.5 10.5 10 15l4.5-4.5" />
-            </svg>
-          </a>
+      <div class="hero-fluid" aria-hidden="true">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
+        <div class="blob blob4"></div>
+      </div>
+      <div class="hero-pill">
+        <span class="hero-pill-dot"></span>
+        <span data-i18n="hero.eyebrow">Boutique de transformación agéntica</span>
+      </div>
+      <h1 id="hero-title" data-i18n="hero.title">¿Y si tu mano de obra<br>fuera <em>ilimitada</em>?</h1>
+      <div class="ticker-row">
+        <span class="ticker-label" data-i18n="hero.tickerLabel">Hecho para</span>
+        <span class="ticker-arrow">›</span>
+        <div class="ticker" id="ticker">
+          <span class="tick active" data-i18n="hero.tick1">negocios que crecen</span>
+          <span class="tick" data-i18n="hero.tick2">fundadores</span>
+          <span class="tick" data-i18n="hero.tick3">equipos de operaciones</span>
+          <span class="tick" data-i18n="hero.tick4">operadores</span>
+          <span class="tick" data-i18n="hero.tick5">quien quiera escalar</span>
         </div>
+      </div>
+      <p data-i18n="hero.copy">
+        Diseñamos, creamos y mantenemos tus empleados digitales, para que te centres en lo que de verdad importa — tu negocio.
+      </p>
+      <div class="hero-actions">
+        <a href="mailto:hello@agentialabs.ai?subject=Sprint%20de%20dise%C3%B1o%20de%20trabajadores%20digitales" class="btn-primary" data-mailto>
+          <span data-i18n="hero.primary">Empieza con un job</span>
+        </a>
+        <a href="#method" class="btn-ghost">
+          <span data-i18n="hero.secondary">Ver cómo funciona</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
       </div>
     </section>
 
     <section class="signal-band" aria-label="Tesis de Agentia">
       <div class="container signal-grid">
         <p data-i18n="signal.statement">El valor no está en abrir otro SaaS. Está en que un trabajo crítico quede cubierto, supervisado y medido cada mes.</p>
-      </div>
-    </section>
-
-    <section class="cta-section">
-      <div class="container cta-inner">
-        <p class="section-kicker" data-i18n="cta.kicker">Primer paso</p>
-        <h2 data-i18n="cta.title">Elige un cuello de botella. Lo convertimos en un trabajador digital medible.</h2>
-        <p data-i18n="cta.copy">Empezamos con un sprint breve: job, proceso, datos, riesgos, KPI y primer caso de producción.</p>
-        <a class="button button-primary" data-mailto href="mailto:hello@agentialabs.ai?subject=Sprint%20de%20dise%C3%B1o%20de%20trabajadores%20digitales">
-          <span data-i18n="cta.button">Reservar un sprint de diseño</span>
-          <svg viewBox="0 0 20 20" aria-hidden="true">
-            <path d="M4 10h10.5M10.5 5.5 15 10l-4.5 4.5" />
-          </svg>
-        </a>
       </div>
     </section>
 
@@ -330,17 +335,24 @@
         description: "Agentia Labs diseña, construye y opera trabajadores digitales que amplían la capacidad de tu equipo humano. Agentia Workspace gobierna, protege y mide su impacto.",
         subject: "Sprint de diseño de trabajadores digitales",
         strings: {
-          "nav.method": "Método",
+          "nav.method": "Metodología",
           "nav.agents": "Agentes",
           "nav.workspace": "Workspace",
           "nav.jobs": "Casos",
           "nav.security": "Seguridad",
-          "nav.cta": "Empezar por un job",
-          "hero.eyebrow": "Boutique de implementación agéntica",
-          "hero.title": "Agentia Labs",
-          "hero.copy": "Diseña, construye y opera trabajadores digitales que amplían la capacidad de tu equipo humano. Nuestra plataforma los gobierna, protege y mide su impacto real en el negocio.",
-          "hero.primary": "Diseñar mi primer trabajador digital",
-          "hero.secondary": "Ver cómo trabajamos",
+          "nav.cta": "Empieza con un job →",
+          "nav.mobileCta": "Empieza con un job",
+          "hero.eyebrow": "Boutique de transformación agéntica",
+          "hero.title": "¿Y si tu mano de obra<br>fuera <em>ilimitada</em>?",
+          "hero.tickerLabel": "Hecho para",
+          "hero.tick1": "negocios que crecen",
+          "hero.tick2": "fundadores",
+          "hero.tick3": "equipos de operaciones",
+          "hero.tick4": "operadores",
+          "hero.tick5": "quien quiera escalar",
+          "hero.copy": "Diseñamos, creamos y mantenemos tus empleados digitales, para que te centres en lo que de verdad importa — tu negocio.",
+          "hero.primary": "Empieza con un job",
+          "hero.secondary": "Ver cómo funciona",
           "signal.statement": "El valor no está en abrir otro SaaS. Está en que un trabajo crítico quede cubierto, supervisado y medido cada mes.",
           "problem.kicker": "El punto de partida",
           "problem.title": "Tu negocio no necesita experimentar con IA. Necesita capacidad operativa fiable.",
@@ -421,12 +433,19 @@
           "nav.workspace": "Workspace",
           "nav.jobs": "Use cases",
           "nav.security": "Security",
-          "nav.cta": "Start with one job",
-          "hero.eyebrow": "Agentic implementation boutique",
-          "hero.title": "Agentia Labs",
-          "hero.copy": "Designs, builds and operates digital workers that extend your human team. Our platform governs them, protects them and measures their real business impact.",
-          "hero.primary": "Design my first digital worker",
-          "hero.secondary": "See how we work",
+          "nav.cta": "Start with one job →",
+          "nav.mobileCta": "Start with one job",
+          "hero.eyebrow": "Agentic transformation boutique",
+          "hero.title": "What if your workforce<br>were <em>limitless</em>?",
+          "hero.tickerLabel": "Built for",
+          "hero.tick1": "growing companies",
+          "hero.tick2": "founders",
+          "hero.tick3": "operations teams",
+          "hero.tick4": "operators",
+          "hero.tick5": "anyone ready to scale",
+          "hero.copy": "We design, create and maintain your digital employees, so you can focus on what truly matters — your business.",
+          "hero.primary": "Start with one job",
+          "hero.secondary": "See how it works",
           "signal.statement": "The value is not another SaaS login. The value is a critical business job covered, supervised and measured every month.",
           "problem.kicker": "Starting point",
           "problem.title": "Your business does not need to experiment with AI. It needs reliable operating capacity.",
@@ -505,10 +524,66 @@
     const savedLang = localStorage.getItem(storageKey);
     const initialLang = requestedLang === "en" || requestedLang === "es" ? requestedLang : savedLang || "es";
 
+    (function drawLogo() {
+      const SP = 30;
+      const OFF = 20;
+      const VIEW = 160;
+      const defs = [
+        [0, 0, 3.5, 0], [1, 0, 5, 0], [2, 0, 5.5, 0], [3, 0, 5, 0], [4, 0, 3.5, 0],
+        [0, 1, 5, 0], [1, 1, 8.5, 0], [2, 1, 11, 0], [3, 1, 8.5, 0], [4, 1, 5, 0],
+        [0, 2, 5, 0], [1, 2, 11, 0], [2, 2, 17, 0], [3, 2, 11, 0], [4, 2, 7, 1],
+        [0, 3, 5, 0], [1, 3, 8.5, 0], [2, 3, 11, 0], [3, 3, 8.5, 0], [4, 3, 7, 1],
+        [0, 4, 3.5, 0], [1, 4, 5, 0], [2, 4, 5.5, 0], [3, 4, 5, 0], [4, 4, 3.5, 0]
+      ];
+      const svgEl = document.getElementById("logo-svg");
+      const group = document.getElementById("dot-group");
+      if (!svgEl || !group) return;
+
+      const dotData = defs.map(([col, row, radius, isGold]) => {
+        const cx = OFF + col * SP;
+        const cy = OFF + row * SP;
+        const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        circle.setAttribute("cx", cx);
+        circle.setAttribute("cy", cy);
+        circle.setAttribute("r", radius);
+        circle.setAttribute("fill", isGold ? "#C2724A" : "#1A1712");
+        group.appendChild(circle);
+        return { cx, cy, radius, isGold, currentRadius: radius };
+      });
+
+      let mouseX = -999;
+      let mouseY = -999;
+      let time = 0;
+      const circles = group.querySelectorAll("circle");
+
+      window.addEventListener("mousemove", (event) => {
+        const rect = svgEl.getBoundingClientRect();
+        mouseX = (event.clientX - rect.left) * (VIEW / rect.width);
+        mouseY = (event.clientY - rect.top) * (VIEW / rect.height);
+      });
+
+      function loop() {
+        time += 0.04;
+        dotData.forEach((dot, index) => {
+          const distance = Math.hypot(mouseX - dot.cx, mouseY - dot.cy);
+          let target = dot.radius;
+          if (distance < 55) target = dot.radius * (1 + 0.85 * (1 - distance / 55));
+          if (dot.isGold) target = dot.radius * (1 + 0.35 * Math.sin(time + index * 0.5));
+          dot.currentRadius += (target - dot.currentRadius) * 0.12;
+          circles[index].setAttribute("r", dot.currentRadius.toFixed(2));
+        });
+        requestAnimationFrame(loop);
+      }
+
+      loop();
+    })();
+
     function setLanguage(lang, persist = true) {
       const dictionary = i18n[lang] || i18n.es;
+      const toggle = document.getElementById("lang-toggle");
       document.documentElement.lang = lang;
       document.title = dictionary.title;
+
       const meta = document.querySelector('meta[name="description"]');
       if (meta) meta.setAttribute("content", dictionary.description);
 
@@ -522,35 +597,55 @@
         node.setAttribute("href", `mailto:hello@agentialabs.ai?subject=${encodeURIComponent(dictionary.subject)}`);
       });
 
-      document.querySelectorAll("[data-lang]").forEach((button) => {
-        button.setAttribute("aria-pressed", String(button.getAttribute("data-lang") === lang));
-      });
+      if (toggle) {
+        toggle.textContent = lang === "es" ? "EN" : "ES";
+        toggle.setAttribute("aria-label", lang === "es" ? "Cambiar a inglés" : "Switch to Spanish");
+      }
 
       if (persist) localStorage.setItem(storageKey, lang);
     }
 
-    document.querySelectorAll("[data-lang]").forEach((button) => {
-      button.addEventListener("click", () => {
-        setLanguage(button.getAttribute("data-lang"));
+    const langToggle = document.getElementById("lang-toggle");
+    if (langToggle) {
+      langToggle.addEventListener("click", () => {
+        const nextLang = document.documentElement.lang === "es" ? "en" : "es";
+        setLanguage(nextLang);
       });
-    });
+    }
 
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navMenu = document.querySelector("#nav-menu");
-    menuToggle.addEventListener("click", () => {
-      const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
-      menuToggle.setAttribute("aria-expanded", String(!isOpen));
-      navMenu.classList.toggle("is-open", !isOpen);
-    });
-
-    navMenu.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        menuToggle.setAttribute("aria-expanded", "false");
-        navMenu.classList.remove("is-open");
+    const ham = document.getElementById("ham");
+    const mobileMenu = document.getElementById("mobile-menu");
+    if (ham && mobileMenu) {
+      ham.addEventListener("click", () => {
+        const isOpen = mobileMenu.classList.toggle("open");
+        ham.setAttribute("aria-expanded", String(isOpen));
+        document.body.style.overflow = isOpen ? "hidden" : "";
       });
-    });
+
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.remove("open");
+          ham.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
+        });
+      });
+    }
 
     setLanguage(initialLang, false);
+
+    (function startTicker() {
+      const ticks = document.querySelectorAll("#ticker .tick");
+      if (!ticks.length) return;
+      let current = 0;
+      setInterval(() => {
+        ticks[current].classList.remove("active");
+        ticks[current].classList.add("exit");
+        const previous = current;
+        current = (current + 1) % ticks.length;
+        ticks[current].classList.add("active");
+        setTimeout(() => ticks[previous].classList.remove("exit"), 480);
+      }, 2600);
+    })();
   </script>
 </body>
 </html>
