@@ -22,7 +22,7 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="styles.css?v=layout-20260616-2337" />
+  <link rel="stylesheet" href="styles.css?v=layout-20260616-2344" />
 </head>
 <body>
   <header>
@@ -604,7 +604,6 @@
       }
 
       if (persist) localStorage.setItem(storageKey, lang);
-      window.dispatchEvent(new CustomEvent("agentia:languagechange"));
     }
 
     const langToggle = document.getElementById("lang-toggle");
@@ -636,29 +635,14 @@
     setLanguage(initialLang, false);
 
     (function startTicker() {
-      const ticker = document.getElementById("ticker");
-      if (!ticker) return;
-      const ticks = Array.from(ticker.querySelectorAll(".tick"));
+      const ticks = document.querySelectorAll("#ticker .tick");
       if (!ticks.length) return;
       let current = 0;
-
-      function fitTickerTo(tick) {
-        if (!tick) return;
-        ticker.style.width = `${Math.ceil(tick.scrollWidth)}px`;
-      }
-
-      requestAnimationFrame(() => fitTickerTo(ticks[current]));
-      window.addEventListener("resize", () => fitTickerTo(ticks[current]));
-      window.addEventListener("agentia:languagechange", () => {
-        requestAnimationFrame(() => fitTickerTo(ticks[current]));
-      });
-
       setInterval(() => {
         ticks[current].classList.remove("active");
         ticks[current].classList.add("exit");
         const previous = current;
         current = (current + 1) % ticks.length;
-        fitTickerTo(ticks[current]);
         ticks[current].classList.add("active");
         setTimeout(() => ticks[previous].classList.remove("exit"), 480);
       }, 2600);
