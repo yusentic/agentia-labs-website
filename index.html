@@ -22,7 +22,7 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="styles.css?v=layout-20260617-0044" />
+  <link rel="stylesheet" href="styles.css?v=layout-20260617-0046" />
 </head>
 <body>
   <header>
@@ -77,8 +77,10 @@
       </div>
       <h1 id="hero-title" data-i18n="hero.title">¿Y si tu mano de obra<br>fuera <em>ilimitada</em>?</h1>
       <div class="ticker-row">
-        <span class="ticker-label" data-i18n="hero.tickerLabel">Agentes de IA para</span>
-        <span class="ticker-arrow">›</span>
+        <span class="ticker-prefix">
+          <span class="ticker-label" data-i18n="hero.tickerLabel">Agentes de IA para</span>
+          <span class="ticker-arrow">›</span>
+        </span>
         <div class="ticker" id="ticker">
           <span class="tick active" data-i18n="hero.tick1">ventas</span>
           <span class="tick" data-i18n="hero.tick2">operaciones</span>
@@ -681,6 +683,7 @@
       }
 
       if (persist) localStorage.setItem(storageKey, lang);
+      document.dispatchEvent(new CustomEvent("agentia:languagechange"));
     }
 
     const langToggle = document.getElementById("lang-toggle");
@@ -715,13 +718,18 @@
       const svg = document.getElementById("cycle-svg");
       if (!svg) return;
       const NS = "http://www.w3.org/2000/svg";
+      const CENTER_X = 310;
+      const CENTER_Y = 290;
+      const RADIUS = 165;
+      const ARC_LENGTH = 210;
       const mk = (tag, attrs) => {
         const element = document.createElementNS(NS, tag);
         Object.keys(attrs).forEach((key) => element.setAttribute(key, attrs[key]));
         return element;
       };
-      svg.appendChild(mk("circle", { class: "ring-track", cx: 310, cy: 290, r: 165 }));
-      svg.appendChild(mk("circle", { class: "ring-arc", cx: 310, cy: 290, r: 165 }));
+      svg.appendChild(mk("circle", { class: "ring-track", cx: CENTER_X, cy: CENTER_Y, r: RADIUS }));
+      const arc = mk("circle", { class: "ring-arc", cx: CENTER_X, cy: CENTER_Y, r: RADIUS });
+      svg.appendChild(arc);
       const pos = [[310, 125], [466.9, 239], [407, 423.5], [213, 423.5], [153.1, 239]];
       const nodes = pos.map((point) => {
         const node = mk("circle", { class: "ring-node", cx: point[0], cy: point[1], r: 8 });
@@ -748,25 +756,73 @@
         });
       }
       const STEP_MS = 1700;          // time per node
-      const N = labels.length;       // 5
+      const N = Math.min(labels.length, nodes.length);
+      if (!N) return;
+      const circumference = 2 * Math.PI * RADIUS;
+      const arcAngle = 360 * (ARC_LENGTH / circumference);
+      arc.style.strokeDasharray = `${ARC_LENGTH} ${circumference - ARC_LENGTH}`;
+      const nodeAngles = pos.map(([x, y]) => {
+        const angle = Math.atan2(y - CENTER_Y, x - CENTER_X) * 180 / Math.PI;
+        return (angle + 360) % 360;
+      });
+      const cycleMs = STEP_MS * N;
+      const normalizeAngle = (angle) => (angle % 360 + 360) % 360;
+      const angularDistance = (a, b) => Math.abs(((a - b + 540) % 360) - 180);
+      let activeIndex = -1;
+
+      const setArcCenterAngle = (angle) => {
+        arc.style.transform = `rotate(${angle - arcAngle / 2}deg)`;
+      };
 
       const setLit = (index) => {
         labels.forEach((l, i) => l.classList.toggle("on", i === index));
         nodes.forEach((n, i) => n.classList.toggle("lit", i === index));
       };
 
-      setLit(0);
-      let current = 0;
+      const closestNodeIndex = (angle) => {
+        let closestIndex = 0;
+        let closestDistance = Infinity;
+        nodeAngles.slice(0, N).forEach((nodeAngle, index) => {
+          const distance = angularDistance(angle, nodeAngle);
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestIndex = index;
+          }
+        });
+        return closestIndex;
+      };
+
+      const renderCycle = (elapsed) => {
+        const cycleProgress = ((elapsed % cycleMs) + cycleMs) % cycleMs / cycleMs;
+        const arcCenterAngle = normalizeAngle(nodeAngles[0] + cycleProgress * 360);
+        const nextIndex = closestNodeIndex(arcCenterAngle);
+
+        setArcCenterAngle(arcCenterAngle);
+        if (nextIndex !== activeIndex) {
+          activeIndex = nextIndex;
+          setLit(activeIndex);
+        }
+      };
+
+      renderCycle(0);
       let started = false;
       const lifecycle = document.querySelector(".lifecycle");
       if (!lifecycle) return;
       new IntersectionObserver((entries, observer) => {
         if (entries[0].isIntersecting && !started) {
           started = true;
-          setInterval(() => {
-            current = (current + 1) % N;
-            setLit(current);
-          }, STEP_MS);
+          if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            observer.disconnect();
+            return;
+          }
+          const startTime = performance.now();
+
+          const tick = (now) => {
+            renderCycle(now - startTime);
+            requestAnimationFrame(tick);
+          };
+
+          requestAnimationFrame(tick);
           observer.disconnect();
         }
       }, { threshold: 0.3 }).observe(lifecycle);
@@ -782,12 +838,25 @@
     (function startTicker() {
       const ticks = document.querySelectorAll("#ticker .tick");
       if (!ticks.length) return;
+      const tickerRow = document.querySelector(".ticker-row");
       let current = 0;
+      const alignActiveTick = () => {
+        if (!tickerRow) return;
+        const width = ticks[current].getBoundingClientRect().width;
+        tickerRow.style.setProperty("--active-tick-width", `${width}px`);
+      };
+
+      alignActiveTick();
+      if (document.fonts) document.fonts.ready.then(alignActiveTick);
+      document.addEventListener("agentia:languagechange", alignActiveTick);
+      window.addEventListener("resize", alignActiveTick);
+
       setInterval(() => {
         ticks[current].classList.remove("active");
         ticks[current].classList.add("exit");
         const previous = current;
         current = (current + 1) % ticks.length;
+        alignActiveTick();
         ticks[current].classList.add("active");
         setTimeout(() => ticks[previous].classList.remove("exit"), 480);
       }, 2600);

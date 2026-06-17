@@ -359,11 +359,21 @@ nav {
 }
 
 .ticker-row {
+  --ticker-width: 230px;
+  --active-tick-width: 230px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
   margin-bottom: 28px;
+  transform: translateX(calc((var(--ticker-width) - var(--active-tick-width)) / 2));
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ticker-prefix {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .ticker-label {
@@ -380,19 +390,17 @@ nav {
 
 .ticker {
   position: relative;
-  width: var(--ticker-width, 46px);
-  min-width: 0;
+  width: var(--ticker-width);
+  min-width: var(--ticker-width);
   height: 1.5em;
   overflow: hidden;
   text-align: left;
-  transition: width 0.28s ease;
 }
 
 .tick {
   position: absolute;
   top: 0;
   left: 0;
-  width: max-content;
   color: var(--accent-d);
   font-size: 15px;
   font-style: italic;
@@ -619,23 +627,16 @@ nav {
   stroke: var(--accent);
   stroke-width: 3;
   stroke-linecap: round;
-  stroke-dasharray: 210 1000;
   transform-box: fill-box;
   transform-origin: center;
-  animation: ringspin 8s linear infinite;
-}
-
-@keyframes ringspin {
-  to {
-    transform: rotate(360deg);
-  }
+  will-change: transform;
 }
 
 .ring-node {
   fill: var(--bg);
   stroke: rgba(194, 114, 74, 0.4);
   stroke-width: 2;
-  transition: fill 0.4s;
+  transition: fill 0.16s ease, stroke 0.16s ease;
 }
 
 .ring-node.lit {
@@ -685,7 +686,11 @@ nav {
   background: var(--bg);
   font-size: 12px;
   font-weight: 500;
-  transition: all 0.45s;
+  transition:
+    color 0.16s ease,
+    background-color 0.16s ease,
+    border-color 0.16s ease,
+    box-shadow 0.16s ease;
 }
 
 .cyc-label.on .n {
@@ -1621,11 +1626,25 @@ nav {
   }
 
   .ticker-row {
-    flex-wrap: wrap;
+    --ticker-width: 220px;
+    flex-direction: column;
+    gap: 8px;
+    transform: none;
+  }
+
+  .ticker-prefix {
+    justify-content: center;
   }
 
   .ticker {
+    width: 220px;
     min-width: 220px;
+    text-align: center;
+  }
+
+  .tick {
+    width: 100%;
+    text-align: center;
   }
 
   .hero p {
