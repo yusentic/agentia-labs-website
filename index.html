@@ -681,13 +681,6 @@
       }
 
       if (persist) localStorage.setItem(storageKey, lang);
-      requestAnimationFrame(() => updateTickerWidth());
-    }
-
-    function updateTickerWidth(activeTick = document.querySelector("#ticker .tick.active")) {
-      const ticker = document.getElementById("ticker");
-      if (!ticker || !activeTick) return;
-      ticker.style.setProperty("--ticker-width", `${Math.ceil(activeTick.scrollWidth)}px`);
     }
 
     const langToggle = document.getElementById("lang-toggle");
@@ -754,56 +747,22 @@
           }));
         });
       }
-      const arcEl = svg.querySelector(".ring-arc");
       const STEP_MS = 1700;          // time per node
       const N = labels.length;       // 5
-      const CIRC = 2 * Math.PI * 165; // full circle px
-
-      // Arc tip offset per node (dashoffset so arc tip lands on node i)
-      const nodeOffsets = Array.from({length: N}, (_, i) => 210 - i * CIRC / N);
-
-      let current = 0;
-      let arcAngle = -90;            // current rotation in degrees (starts at top)
-      let targetAngle = -90;         // where we want to be
-      let rafId = null;
-      let lastTime = null;
 
       const setLit = (index) => {
         labels.forEach((l, i) => l.classList.toggle("on", i === index));
         nodes.forEach((n, i) => n.classList.toggle("lit", i === index));
-        // Set dashoffset so arc tip sits on this node
-        if (arcEl) arcEl.setAttribute("stroke-dashoffset", nodeOffsets[index]);
-        // Target angle: node i is at -90 + i*72 degrees
-        // Always go forward (clockwise), never backwards
-        const desired = -90 + index * 72;
-        // If desired < arcAngle, it means we've wrapped — add 360
-        while (desired < targetAngle) targetAngle -= 360;
-        // Snap targetAngle to the correct forward position
-        targetAngle = arcAngle + ((desired - arcAngle + 720) % 360);
-      };
-
-      const spinArc = (timestamp) => {
-        if (!lastTime) lastTime = timestamp;
-        const dt = timestamp - lastTime;
-        lastTime = timestamp;
-        // Rotate at 360deg per (STEP_MS * N) ms = full circle per full cycle
-        const speed = 360 / (STEP_MS * N); // deg/ms
-        arcAngle += speed * dt;
-        if (arcEl) {
-          arcEl.style.transform = "rotate(" + arcAngle + "deg)";
-        }
-        rafId = requestAnimationFrame(spinArc);
       };
 
       setLit(0);
+      let current = 0;
       let started = false;
       const lifecycle = document.querySelector(".lifecycle");
       if (!lifecycle) return;
       new IntersectionObserver((entries, observer) => {
         if (entries[0].isIntersecting && !started) {
           started = true;
-          lastTime = null;
-          rafId = requestAnimationFrame(spinArc);
           setInterval(() => {
             current = (current + 1) % N;
             setLit(current);
@@ -824,13 +783,11 @@
       const ticks = document.querySelectorAll("#ticker .tick");
       if (!ticks.length) return;
       let current = 0;
-      updateTickerWidth(ticks[current]);
       setInterval(() => {
         ticks[current].classList.remove("active");
         ticks[current].classList.add("exit");
         const previous = current;
         current = (current + 1) % ticks.length;
-        updateTickerWidth(ticks[current]);
         ticks[current].classList.add("active");
         setTimeout(() => ticks[previous].classList.remove("exit"), 480);
       }, 2600);

@@ -619,10 +619,16 @@ nav {
   stroke: var(--accent);
   stroke-width: 3;
   stroke-linecap: round;
-  stroke-dasharray: 210 1036.73;
-  stroke-dashoffset: 210;
-  transform-origin: 310px 290px;
-  transform: rotate(-90deg);
+  stroke-dasharray: 210 1000;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ringspin 8s linear infinite;
+}
+
+@keyframes ringspin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .ring-node {
@@ -1136,7 +1142,6 @@ nav {
 .workspace-frame img {
   width: 100%;
   height: auto;
-  object-fit: contain;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -1219,6 +1224,9 @@ nav {
 }
 
 .verticals-heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-self: center;
 }
 
